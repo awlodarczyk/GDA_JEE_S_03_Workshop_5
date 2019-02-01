@@ -40,6 +40,11 @@ public class BookController {
     public Book addBook(@RequestBody BookDto book){
        return service.addBook(book);
     }
+
+    @RequestMapping(value = "/{id}",method = RequestMethod.GET)
+    public Book updateBook(@PathVariable Long id){
+        return service.getBookById(id);
+    }
     @RequestMapping(value = "/{id}",method = RequestMethod.PUT)
     public Book updateBook(@PathVariable Long id,@RequestBody BookDto book){
         return service.updateBook(id,book);
