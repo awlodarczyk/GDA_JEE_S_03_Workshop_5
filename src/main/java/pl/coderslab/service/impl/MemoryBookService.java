@@ -50,7 +50,7 @@ public class MemoryBookService implements BookService {
         if(book.getTitle()==null) throw new RuntimeException("No title");
         if(book.getType()==null) throw new RuntimeException("No type");
         if(book.getPublisher()==null) throw new RuntimeException("No publisher");
-        Book last = books.stream().sorted(((o1, o2) -> o2.getId().compareTo(o1.getId()))).findFirst().get();
+        Book last = books.stream().min((o1, o2) -> o2.getId().compareTo(o1.getId())).get();
         Book book1 = new Book(last.getId()+1,book.getIsbn(),book.getTitle(),book.getAuthor(),book.getPublisher(), book.getType());
         books.add(book1);
         return book1;
